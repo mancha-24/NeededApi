@@ -7,7 +7,7 @@ jobs:
 - job: BuildSolutionOnPullRequest
   displayName: 'Build solution on pull request'
   steps:
-  - checkout: $(Build.SourceBranch)
+  - checkout: self
     displayName: 'Checkout source code'
   - script: echo "Build solution on pull request"
   
