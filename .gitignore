@@ -1,0 +1,26 @@
+bin/
+obj/
+*.dll
+*.pdb
+*.exe
+*.msi
+*.zip
+*.suo
+*.cache
+*.log
+*.vscode/
+*.vs/
+
+# Dependencias NuGet
+*.nuget.config
+packages/
+*.nupkg
+.nuget/
+
+# Archivos de configuración y de usuario
+*.config
+*.user
+*.suo
+*.userprefs
+*.pidb
+.vscode/
