@@ -18,13 +18,13 @@ jobs:
       version: '8.x'
       installationPath: $(Agent.ToolsDirectory)/dotnet
 
-  - script: dotnet restore
+  - script: dotnet restore $(Build.SourcesDirectory)/api/NeededApi.sln
     displayName: 'Restore packages' 
 
-  - script: dotnet test $(Build.SourcesDirectory)/NeededApi.Tests/NeededApi.Tests.csproj
+  - script: dotnet test $(Build.SourcesDirectory)/tests/NeededApi.Tests.csproj
     displayName: 'Run tests'
 
-  - script: dotnet build # $(Build.SourcesDirectory)/NeededApi.sln
+  - script: dotnet build $(Build.SourcesDirectory)/api/NeededApi.sln
     displayName: 'Build solution'
 
   - script: echo "Build solution on pull request completed"
