@@ -10,10 +10,8 @@ on:
     branches: [ "devops" ]
 
 jobs:
-  build:
-
+  buildApi:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET
@@ -24,7 +22,18 @@ jobs:
       run: dotnet restore api/NeededApi.csproj
     - name: Build
       run: dotnet build --no-restore api/NeededApi.csproj
+
+  buildTests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+    - name: Restore dependencies
+      run: dotnet restore tests/NeededApi.Tests/NeededApi.Tests.csproj
+    - name: Build
+      run: dotnet build --no-restore tests/NeededApi.Tests/NeededApi.Tests.csproj
     - name: Test
-      run: dotnet test --verbosity normal tests/NeededApi.Tests/NeededApi.Tests.csproj
-    - name: Print message
-      run: echo "restore, build and test done"
+      run: dotnet test --no-build --verbosity normal tests/NeededApi.Tests/NeededApi.Tests.csproj
