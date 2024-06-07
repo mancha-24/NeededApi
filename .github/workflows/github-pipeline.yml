@@ -21,10 +21,10 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore api/NeededApi.csproj
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore api/NeededApi.csproj
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal tests/NeededApi.Tests.csproj
     - name: Print message
       run: echo "restore, build and test done"
