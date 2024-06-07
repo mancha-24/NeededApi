@@ -1,0 +1,27 @@
+trigger:
+  branches:
+    include:
+      - devops
+
+jobs:
+- job: BuildSolutionOnPullRequest
+  displayName: 'Build solution on pull request'
+  steps:
+  - checkout: $(Build.SourceBranch)
+    displayName: 'Checkout source code'
+  - script: echo "Build solution on pull request"
+  
+  - task: UseDotNet@2
+    displayName: 'Use .NET Core sdk 8.x'
+    inputs:
+      packageType: 'sdk'
+      version: '8.x'
+      installationPath: $(Agent.ToolsDirectory)/dotnet
+
+  - script: dotnet restore
+    displayName: 'Restore packages' 
+
+  - script: dotnet build # $(Build.SourcesDirectory)/NeededApi.sln
+    displayName: 'Build solution'
+
+  - script: echo "Build solution on pull request completed"
