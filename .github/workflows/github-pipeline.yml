@@ -25,6 +25,6 @@ jobs:
     - name: Build
       run: dotnet build --no-restore api/NeededApi.csproj
     - name: Test
-      run: dotnet test --no-build --verbosity normal tests/NeededApi.Tests/NeededApi.Tests.csproj
+      run: dotnet test --verbosity normal tests/NeededApi.Tests/NeededApi.Tests.csproj
     - name: Print message
       run: echo "restore, build and test done"
