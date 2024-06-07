@@ -21,7 +21,7 @@ jobs:
   - script: dotnet restore $(Build.SourcesDirectory)/api/NeededApi.sln
     displayName: 'Restore packages' 
 
-  - script: dotnet test $(Build.SourcesDirectory)/tests/NeededApi.Tests.csproj
+  - script: dotnet test $(Build.SourcesDirectory)/tests/NeededApi.Tests/NeededApi.Tests.csproj
     displayName: 'Run tests'
 
   - script: dotnet build $(Build.SourcesDirectory)/api/NeededApi.sln
