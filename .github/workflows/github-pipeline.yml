@@ -22,10 +22,8 @@ jobs:
         dotnet-version: 8.0.x
     - name: Restore dependencies
       run: dotnet restore
-      run: echo "restore done"
     - name: Build
       run: dotnet build --no-restore
-      run: echo "build done"
     - name: Test
       run: dotnet test --no-build --verbosity normal
-      run: echo "test done"
+      run: echo "restore, build and test done"
